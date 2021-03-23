@@ -1,3 +1,3 @@
 <?php 
-	header("Location: ../webhotelao/app/login/login.php");
+	header("Location: ../app/login/login.php");
 ?>
