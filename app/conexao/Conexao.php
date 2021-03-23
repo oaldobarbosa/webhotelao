@@ -12,10 +12,10 @@ class Conexao {
    public static function getConexao() {
 
 
-        $host = 'localhost;port=5432';
-        $dbname = 'webhotelao2';
-        $user = 'postgres';
-        $pass = 'aldo1020';
+        $host = 'ec2-18-214-208-89.compute-1.amazonaws.com;port=5432';
+        $dbname = 'delsshoqbjdfj6';
+        $user = 'aioldlgokyquas';
+        $pass = 'a8a4a687cc1dd8a245b82edf905cb70cc341ed9d689178bf289031920b82de1e';
 
 
         try {
