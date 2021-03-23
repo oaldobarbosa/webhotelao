@@ -1,0 +1,148 @@
+CREATE TABLE public.quarto (
+                numero INT PRIMARY KEY NOT NULL,
+                tipo VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE public.hospede (
+                idhospede SERIAL NOT NULL,
+                nome VARCHAR(50) NOT NULL,
+                cpfhospede VARCHAR(11) primary key NOT NULL,
+                telefone VARCHAR(11) NOT NULL,
+                sexo VARCHAR(10) NOT NULL,
+                dataNascimento DATE NOT NULL
+                
+);
+
+CREATE TABLE public.hospedagem (
+                idhospedagem SERIAL NOT NULL ,
+                cpfhospede varchar(11) NOT NULL,
+                datahospedagem DATE NOT NULL,
+                numero INT NOT NULL,
+                dataCheckout DATE NOT NULL,
+                valor REAL NOT NULL,
+                CONSTRAINT idhospedagem PRIMARY KEY (idhospedagem)
+);
+
+CREATE TABLE public.checkout (
+                idcheckout SERIAL PRIMARY KEY NOT NULL ,
+                idhospedagem INT NOT NULL,
+                valor REAL NOT NULL
+);
+
+
+ALTER TABLE public.hospedagem ADD FOREIGN KEY (numero) REFERENCES public.quarto (numero);
+
+ALTER TABLE public.hospedagem ADD FOREIGN KEY (cpfhospede) REFERENCES public.hospede (cpfhospede);
+
+ALTER TABLE public.checkout ADD FOREIGN KEY (idhospedagem) REFERENCES public.hospedagem (idhospedagem);
+
+
+DELIMITER $$
+    CREATE TRIGGER ProdutoVendaInsert BEFORE INSERT ON ProdutoVenda
+    FOR EACH ROW BEGIN
+
+    -- valorUnitario (ProdutoVenda) = valorVenda (Produto)
+    -- valorTotal (ProdutoVenda) = quantidade * valorUnitario
+        SET NEW.valorUnitario = (SELECT valorVenda FROM Produto WHERE id = NEW.idProduto);
+        SET NEW.valorTotal = NEW.quantidade * NEW.valorUnitario;
+
+    -- quantidade (Produto) -= quantidade (ProdutoVenda)
+        UPDATE Produto
+        SET quantidade = quantidade - NEW.quantidade
+        WHERE id = NEW.idProduto;
+    -- quantidade (Venda) += quantidade(ProdutoVenda)
+    -- valorTotal (Venda) += valorTotal (ProdutoVenda)
+        UPDATE Venda
+        SET quantidade = quantidade + NEW.quantidade,
+            valorTotal = valorTotal + NEW.valorTotal
+        WHERE id = NEW.idVenda;
+END $$
+DELIMITER;
+
+
+-----------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------
+
+
+
+select * from hospede
+
+INSERT INTO hospede (nome, cpfhospede, telefone, sexo, datanascimento) 
+VALUES ('Aldo Barbosa', '07625724506', '77991082394', 'Masculino', '10/08/1999');
+
+INSERT INTO hospede (nome, cpfhospede, telefone, sexo, datanascimento) 
+VALUES ('Amanda de Souza Nogueira', '08491521518', '77991238128', 'Feminino', '30/05/1997');
+
+UPDATE hospede set nome='Amanda', telefone='77991238122', sexo='Feminino', datanascimento = '29/05/1998' WHERE cpfhospede = '08491521518'
+
+
+INSERT INTO quarto (numero, tipo) VALUES (1, 'Basic');
+INSERT INTO quarto (numero, tipo) VALUES (2, 'Basic');
+INSERT INTO quarto (numero, tipo) VALUES (3, 'Basic');
+INSERT INTO quarto (numero, tipo) VALUES (4, 'Suíte');
+
+INSERT INTO hospedagem (cpfhospede, datahospedagem, numero, datacheckout, valor)
+VALUES ('076', '05/03/2021', 1, '07/03/2021', 150.00);
+
+insert into checkout (idhospedagem, valor) values( 3, 150.00)
+delete from hospedagem where idhospedagem = 1
+
+
+select hospedagem.datahospedagem from hospedagem, hospede 
+where hospede.cpfhospede = hospedagem.cpfhospede and hospede.cpfhospede = '07625724506'
+
+
+
+ALTER TABLE public.hospedagem ADD FOREIGN KEY (cpfhospede) REFERENCES public.hospede (cpfhospede);
+SELECT * FROM hospede;
+
+delete from hospedagem where cpfhospede = '076'
+
+
+SELECT * FROM hospedagem;
+
+SELECT * FROM CHECKOUT;
+
+SELECT * FROM quarto;
+
+
+
+create table hst_hospedagem (
+                idhospedagem SERIAL primary key NOT NULL ,
+                cpfhospede varchar(11) NOT NULL,
+                datahospedagem DATE NOT NULL,
+                numero INT NOT NULL,
+                dataCheckout DATE NOT NULL,
+                valor REAL NOT NULL
+);
+
+
+
+create table  usuario (
+	idusuario serial not null,
+	nome varchar(45) not null,
+	email varchar(45) not null,
+	senha varchar(45) not null
+)
+
+
+-- delimiter
+-- delimiter
+
+
+CREATE OR REPLACE FUNCTION salvar_hospedagens()
+RETURNS trigger
+Language plpgsql
+as $function$
+	begin
+		insert into hst_hospedagem (idhospedagem, cpfhospede, datahospedagem, numero, datacheckout, valor)
+		values(old.idhospedagem, old.cpfhospede, old.datahospedagem, old.numero, old.datacheckout, old.valor);
+		return NEW;
+	end;
+	$function$;
+
+
+create trigger historico after delete on hospedagem
+for each row execute procedure salvar_hospedagens()
+
+

@@ -1,0 +1,151 @@
+
+
+
+body{
+			background-color: #C8D5DA;
+			font-family: Arial, Helvetica;
+			margin: 0px;
+		}
+
+		a{
+			text-decoration: none;
+
+		}
+
+		header{
+
+
+
+			background-color: #54BBD1;
+
+
+
+			
+			padding: 10px;
+			display: block;
+			font-family: sail;
+
+		}
+
+
+		.btn-abrir{
+			color: white;
+			font-size: 25px;
+		}
+
+		.btn-user{
+
+			font-family: arial;
+
+			display: inline-block;
+			margin-left: auto;
+
+			cursor: pointer;
+
+
+			color: white;
+			font-size: 20px;
+			float: right;
+		}
+
+		nav{
+			height: 100%;
+			width: 0px;
+			background-color: #47737C;
+			position: fixed;
+			top: 10;
+			left: 0;
+			z-index: 1;
+			overflow: hidden;
+			transition: width 0.3s;
+		}
+
+
+		nav a{
+
+			color: white;
+			font-size: 25px;
+			display: block;
+			padding: 12px 10px 12px 32px;
+
+
+			border-bottom: 3px solid #C8D5DA;
+		}
+
+		nav a:hover{
+			color: white;
+			background-color: #54BBD1;
+
+
+		}
+
+
+
+
+		/*.active > a {
+			color:red;
+		}*/
+
+		main{
+
+			margin: auto;
+
+			padding: 10px;
+			transition: margin-left 0.5s;
+		}
+
+		.caixa-hospedagem{
+			width: 300px;
+			height: 150px;
+			display: inline-block;
+			background-color: red;
+
+			float: left;
+
+			border-radius: 25px;
+
+
+
+			margin: 30px;
+			padding: 30px;
+
+
+			/*border: 5px solid blue;*/
+
+
+			
+		}
+
+		.caixa-hospede{
+
+			width: 300px;
+			height: 150px;
+			display: inline-block;
+			background-color: green;
+
+			float: left;
+
+			margin: 30px;
+			padding: 30px;
+
+			border-radius: 25px;
+			
+
+		}
+
+		.caixa-reserva{
+
+			width: 300px;
+			height: 150px;
+			display: inline-block;
+			background-color: yellow;
+
+			float: left;
+
+			margin: 30px;
+			padding: 30px;
+
+			border-radius: 25px;
+			
+
+		}
