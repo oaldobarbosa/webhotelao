@@ -39,7 +39,9 @@ require "../login/verificar.php";
 
 <html>
 <head>
-	<title>Dash</title>
+	<link rel="shortcut icon" href="style/favicon.ico" />
+
+	<title>Dashboard</title>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Sail&display=swap" rel="stylesheet">
@@ -53,7 +55,7 @@ require "../login/verificar.php";
 
 	<header>
 		<a href="#" class="btn-abrir" onclick="abrirMenu()"> &#9776;  Web Hotelão </a>
-		<!--<center><h2>Web Hotelão</h2></center>-->
+		
 		<a href="../login/logout.php" class="btn-user">Olá <?php echo $nomeUsuario; ?>! sair?</a>
 		
 	</header>
@@ -65,7 +67,7 @@ require "../login/verificar.php";
 		<a href="read_hospedagem.php">Hospedagens</a>
 		<a href="read_hospede.php">Hospedes</a>
 		<a href="read_quarto.php">Quartos</a>
-		<a href="read_reserva.php">Reservas</a>
+		<a href="#">Reservas</a>
 		<a href="read_historico.php">Historico</a>
 	
 	</nav>

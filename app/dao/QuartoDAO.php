@@ -1,83 +1,47 @@
 <?php 
 class QuartoDAO{
 
-	//crate - insert
-	public function create(Hospede $hospede){
-		try {
-			$sql = "INSERT INTO quarto (numero, tipo) VALUES (:numero, :tipo)";
-
-			$p_sql = Conexao::getConexao()->prepare($sql);
-
-			$p_sql->bindValue(":numero", $hospede->getNumero());
-			$p_sql->bindValue(":tipo", $hospede->getTipo());
-
-			return $p_sql->execute();
-
-		} catch (Exception $e) {
-			print "Erro ao inserir quarto " . $e;	
-		}
-
-	}
-
-
-	//read - unit
-	public function readUnit(){
-		try {
-			$sql = "SELECT * FROM hospede WHERE cpf = :cpf";
-
-			$result = Conexao::getConexao()->prepare($sql);
-		} catch (Exception $e) {
-			print
-			
-		}
-
-	}
-
-
 	//read - all
-	public function readAll(){
+	public function read(){
 		try {
 
-			$sql = "SELECT * FROM hospede";
+			$sql = "SELECT * FROM quarto ORDER BY numeroquarto ASC";
 
-			$result = 
+			$result = Conexao::getConexao()->query($sql);
+
+			$lista = $result->fetchAll(PDO::FETCH_ASSOC);
+
+			$f_lista = array();
+
+			foreach ($lista as $l) {
+				$s_lista[] = $this->listaQuartos($l);
+			}
+
+			return $s_lista;
+
 			
 		} catch (Exception $e) {
 
-			print "Erro ao buscar hospedes"
+			print "Erro ao buscar hospedagens";
 			
 		}
 	}
 
-	//update
-	public function update(){
-		try {
-			$sql = "UPDATE hospede set nome=:nome, telefone=:telefone, sexo=:sexo, datanascimento = :datanascimento WHERE cpf = :cpf"
-			
-		} catch (Exception $e) {
-			
-		}
+
+	public function listaQuartos($row){
+
+		$quarto = new Quarto();
+
+		$quarto->setNumeroquarto($row['numeroquarto']);
+		$quarto->setTipo($row['tipo']);
+		$quarto->setStatus($row['status']);
+		$quarto->setValordiaria($row['valordiaria']);
+
+		return $quarto;
+
 
 	}
-
-	//delete
-	public function delete(){
-		try {
-			
-		} catch (Exception $e) {
-			
-		}
-
-	}
-
-
-	public function listarHospedes($row){
-
-		$hospede = new Hospede();
-		$hospede->set
-
-	}
-
+	
 
 	
 } ?>

@@ -4,16 +4,21 @@ class HospedagemDAO{
 	//crate - insert
 	public function create(Hospedagem $hospedagem){
 		try {
-			$sql = "INSERT INTO hospedagem (cpfhospede, datahospedagem, numero, datacheckout, valor) 
-			VALUES (:cpfhospede, :datahospedagem, :numero, :datacheckout, :valor)";
+			$sql = "INSERT INTO hospedagem (cpfhospede, datahospedagem, numeroquarto, datacheckout, valorhospedagem, diarias, valordiaria) 
+			VALUES (:cpfhospede, :datahospedagem, :numeroquarto, :datacheckout, :valorhospedagem, :diarias, :valordiaria)";
 
 			$p_sql = Conexao::getConexao()->prepare($sql);
 
 			$p_sql->bindValue(":cpfhospede", $hospedagem->getCpfhospede());
 			$p_sql->bindValue(":datahospedagem", $hospedagem->getDatahospedagem());
-			$p_sql->bindValue(":numero", $hospedagem->getNumero());
+			$p_sql->bindValue(":numeroquarto", $hospedagem->getNumeroquarto());
 			$p_sql->bindValue(":datacheckout", $hospedagem->getDatacheckout());
-			$p_sql->bindValue("valor", $hospedagem->getValor());
+			$p_sql->bindValue(":diarias", $hospedagem->getDiarias());
+			$p_sql->bindValue(":valorhospedagem", $hospedagem->getValorhospedagem());
+			$p_sql->bindValue(":valordiaria", $hospedagem->getValordiaria());
+			
+
+
 
 			return $p_sql->execute();
 
@@ -71,15 +76,15 @@ class HospedagemDAO{
 	//update
 	public function update(Hospedagem $hospedagem){
 		try {
-			$sql = "UPDATE hospedagem SET (cpfhospede=:cpfhospede, datahospedagem=:datahospedagem, numero=:numero, datacheckout=:datacheckout, valor=:valor WHERE cpfhospede = :cpfhospede";
+			$sql = "UPDATE hospedagem SET (cpfhospede=:cpfhospede, datahospedagem=:datahospedagem, numeroquarto=:numeroquarto, datacheckout=:datacheckout, valorhospedagem=:valorhospedagem WHERE cpfhospede = :cpfhospede";
 
 			$p_sql = Conexao::getConexao()->prepare($sql);
 
 			$p_sql->bindValue(":cpfhospede", $hospedagem->getCpfhospede());
 			$p_sql->bindValue(":datahospedagem", $hospedagem->getDatahospedagem());
-			$p_sql->bindValue(":numero", $hospedagem->getNumero());
+			$p_sql->bindValue(":numeroquarto", $hospedagem->getNumeroquarto());
 			$p_sql->bindValue(":datacheckout", $hospedagem->getDatacheckout());
-			$p_sql->bindValue("valor", $hospedagem->getValor());
+			$p_sql->bindValue("valorhospedagem", $hospedagem->getValorhospedagem());
 
 			return $p_sql->execute();
 
@@ -123,9 +128,12 @@ class HospedagemDAO{
 
 		$hospedagem->setCpfhospede($row['cpfhospede']);
 		$hospedagem->setDatahospedagem($row['datahospedagem']);
-		$hospedagem->setNumero($row['numero']);
+		$hospedagem->setNumeroquarto($row['numeroquarto']);
 		$hospedagem->setDatacheckout($row['datacheckout']);
-		$hospedagem->setValor($row['valor']);
+		$hospedagem->setValorhospedagem($row['valorhospedagem']);
+
+		$hospedagem->setDiarias($row['diarias']);
+		$hospedagem->setValordiaria($row['valordiaria']);
 
 		return $hospedagem;
 

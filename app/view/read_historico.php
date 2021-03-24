@@ -20,6 +20,7 @@ $historicodao = new HistoricoDAO();
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="shortcut icon" href="style/favicon.ico" />
 	<title>Histórico</title>
 
 
@@ -31,6 +32,23 @@ $historicodao = new HistoricoDAO();
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 
 	<script type="text/javascript" src="js/js.js"></script>
+
+	<style type="text/css">
+		th{
+			text-align: center;
+			width: 150px;
+			height: 40px;
+			background-color: #47737C;
+			color: white;
+		}
+				
+		td{
+			text-align: center;
+			width: 101px;
+			height: 40px;
+			background-color: #C4C4C4;
+		}
+	</style>
 </head>
 
 
@@ -55,19 +73,19 @@ $historicodao = new HistoricoDAO();
 	
 	</nav>
 
-	<main id="conteudo">
+	<main id="conteudo"><center>
 
 		<h1>Histórico de Hospedagem</h1>
-		<hr>
+		<br>
 		
-		<table border="1px">
+		<table >
 
 		<tr>
 			<th>CPF Hospede</th>
 			<th>Data Hospedagem</th>
 			<th>Data Checkout</th>
 			<th>Numero Quarto</th>
-			<th>Valor</th>
+			<th>Valor Hospedagem</th>
 		</tr>
 
 		<?php foreach ($historicodao->read() as $historico ) { ?>
@@ -85,7 +103,7 @@ $historicodao = new HistoricoDAO();
 		</table>
 		
 
-		</main>
+		</center></main>
 
 </body>
 </html>

@@ -39,9 +39,9 @@ class HistoricoDAO{
 
 		$historico->setCpfhospede($row['cpfhospede']);
 		$historico->setDatahospedagem($row['datahospedagem']);
-		$historico->setNumero($row['numero']);
+		$historico->setNumero($row['numeroquarto']);
 		$historico->setDatacheckout($row['datacheckout']);
-		$historico->setValor($row['valor']);
+		$historico->setValor($row['valorhospedagem']);
 
 		return $historico;
 

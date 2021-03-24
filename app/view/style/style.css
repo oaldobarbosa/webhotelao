@@ -1,6 +1,5 @@
 
 
-
 body{
 			background-color: #C8D5DA;
 			font-family: Arial, Helvetica;
@@ -13,14 +12,7 @@ body{
 		}
 
 		header{
-
-
-
 			background-color: #54BBD1;
-
-
-
-			
 			padding: 10px;
 			display: block;
 			font-family: sail;
@@ -50,7 +42,7 @@ body{
 
 		nav{
 			height: 100%;
-			width: 0px;
+			width: 0;
 			background-color: #47737C;
 			position: fixed;
 			top: 10;
@@ -70,6 +62,7 @@ body{
 
 
 			border-bottom: 3px solid #C8D5DA;
+
 		}
 
 		nav a:hover{
@@ -148,4 +141,8 @@ body{
 			border-radius: 25px;
 			
 
+		}
+
+		.titulo{
+			font-family: roboto;
 		}

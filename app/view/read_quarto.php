@@ -5,12 +5,12 @@ session_start();
 require "../login/verificar.php";
 
 include_once "../conexao/Conexao.php";
-include_once "../model/Hospede.php";
-include_once "../dao/HospedeDAO.php";
+include_once "../model/Quarto.php";
+include_once "../dao/QuartoDAO.php";
 
 //instancia classes
-$hospede = new Hospede();
-$hospededao = new HospedeDAO();
+$quarto = new Quarto();
+$quartodao = new QuartoDAO();
 
 ?>
 
@@ -20,7 +20,10 @@ $hospededao = new HospedeDAO();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Nova Hospedagem</title>
+	<link rel="shortcut icon" href="style/favicon.ico" />
+	<title>Quartos</title>
+
+
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Sail&display=swap" rel="stylesheet">
@@ -29,6 +32,23 @@ $hospededao = new HospedeDAO();
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 
 	<script type="text/javascript" src="js/js.js"></script>
+
+	<style type="text/css">
+		th{
+			text-align: center;
+			width: 150px;
+			height: 40px;
+			background-color: #47737C;
+			color: white;
+		}
+				
+		td{
+			text-align: center;
+			width: 101px;
+			height: 40px;
+			background-color: #C4C4C4;
+		}
+	</style>
 </head>
 
 
@@ -53,11 +73,40 @@ $hospededao = new HospedeDAO();
 	
 	</nav>
 
-	<main id="conteudo">
+	<main id="conteudo"><center>
 
-		<h1>Quartos</h1>
+		<h1>Todos os Quartos</h1>
 
-	</main>
+		<br>
+		
+		
+		<table>
+
+		<tr>
+			<th>Nrº Quarto</th>
+			<th>Tipo</th>
+			<th>Valor Diaria</th>
+			<th>Status</th>
+	
+		</tr>
+
+		<?php foreach ($quartodao->read() as $quarto ) { ?>
+
+			<tr>
+				<td><?=$quarto->getNumeroquarto(); ?></td>
+				<td><?=$quarto->getTipo(); ?></td>
+				<td><?=$quarto->getValordiaria(); ?></td>
+				<td><?=$quarto->getStatus(); ?></td>
+
+
+			</tr>
+
+		<?php } ?>
+
+		</table>
+		
+
+		</center></main>
 
 </body>
 </html>

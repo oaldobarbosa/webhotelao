@@ -21,6 +21,7 @@ $hospededao = new HospedeDAO();
 <html>
 <head>
 	<title>Hospedes</title>
+	<link rel="shortcut icon" href="style/favicon.ico" />
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Sail&display=swap" rel="stylesheet">
@@ -29,6 +30,70 @@ $hospededao = new HospedeDAO();
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 
 	<script type="text/javascript" src="js/js.js"></script>
+
+	<style type="text/css">
+
+		.btn-novohospede{
+			background-color: green;
+			color: white;
+			width: 150px;
+			height: 40px;
+
+			border-radius: 25px;
+
+		}
+		.btn-novohospede:hover{
+			background-color: white;
+			color: green;
+			border: 0;
+		}
+		th{
+			text-align: center;
+			width: 150px;
+			height: 40px;
+			background-color: #47737C;
+			color: white;
+		}
+				
+		td{
+			text-align: center;
+			width: 101px;
+			height: 40px;
+			background-color: #C4C4C4;
+		}
+
+		.btn-editar{
+			background-color: yellow;
+			color: black;
+			width: 70px;
+			height: 25px;
+			border: 0;
+
+			border-radius: 25px;
+		}
+		.btn-editar:hover{
+			background-color: white;
+			color: red;
+			border: 0;
+		}
+
+		.btn-excluir{
+			background-color: red;
+			color: white;
+			width: 70px;
+			height: 25px;
+			border: 0;
+
+			border-radius: 25px;
+		}
+		.btn-excluir:hover{
+			background-color: white;
+			color: black;
+			border: 0;
+		}
+
+
+	</style>
 </head>
 
 
@@ -53,17 +118,17 @@ $hospededao = new HospedeDAO();
 	
 	</nav>
 
-	<main id="conteudo">
+	<main id="conteudo"><center>
 
 		<h1>Hospedes</h1>
 
-	<hr>
+	<br>
 
-	<a href="create_hospede.php"><button>Novo Hospede</button></a>
+	<a href="create_hospede.php" ><button class="btn-novohospede">Novo Hospede</button></a>
 	
-	<hr>
+	<br><br>
 
-	<table border="1px">
+	<table >
 
 		<tr>
 			<th>Nome</th>
@@ -87,12 +152,12 @@ $hospededao = new HospedeDAO();
 
 
 					<a href="update_hospede.php?cpf=<?php echo $hospede->getCpfhospede() ?>">
-						<button type="button">Editar</button>
+						<button type="button" class="btn-editar">Editar</button>
 					</a>
                                    
                         
                     <a href="../controller/HospedeController.php?deletarHospede=<?= $hospede->getCpfhospede() ?>">
-                            <button type="button">Excluir</button>
+                            <button type="button" class="btn-excluir">Excluir</button>
                         </a>
                         
                         
@@ -118,7 +183,7 @@ $hospededao = new HospedeDAO();
 	</table>
 
 
-	</main>
+	</center></main>
 
 </body>
 </html>

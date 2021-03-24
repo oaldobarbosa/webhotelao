@@ -7,9 +7,12 @@
  	private $idHospedagem;
  	private $cpfHospede;
  	private $dataHospedagem;
- 	private $numero;
+ 	private $numeroQuarto;
  	private $dataCheckout;
- 	private $valor;
+ 	private $valorHospedagem;
+ 	private $valorDiaria;
+
+ 	private $diarias;
 
 
  	//get
@@ -24,14 +27,21 @@
  	public function getDatahospedagem(){
  		return $this->dataHospedagem;
  	}
- 	public function getNumero(){
- 		return $this->numero;	
+ 	public function getNumeroquarto(){
+ 		return $this->numeroQuarto;	
  	}
  	public function getDatacheckout(){
  		return $this->dataCheckout;
  	}
- 	public function getValor(){
- 		return $this->valor;
+ 	public function getValorHospedagem(){
+ 		return $this->valorHospedagem;
+ 	}
+ 	public function getValorDiaria(){
+ 		return $this->valorDiaria;
+ 	}
+
+ 	public function getDiarias(){
+ 		return $this->diarias;
  	}
 
  	//set
@@ -46,14 +56,20 @@
  	public function setDatahospedagem($dataHospedagem){
  		$this->dataHospedagem = $dataHospedagem;
  	}
- 	public function setNumero($numero){
- 		$this->numero = $numero;
+ 	public function setNumeroquarto($numeroQuarto){
+ 		$this->numeroQuarto = $numeroQuarto;
  	}
  	public function setDatacheckout($dataCheckout){
  		$this->dataCheckout = $dataCheckout;
  	}
- 	public function setValor($valor){
- 		$this->valor = $valor; 		
+ 	public function setValorhospedagem($valorHospedagem){
+ 		$this->valorHospedagem = $valorHospedagem; 		
+ 	}
+ 	public function setValorDiaria($valorDiaria){
+ 		$this->valorDiaria = $valorDiaria; 		
+ 	}
+ 	public function setDiarias($diarias){
+ 		$this->diarias = $diarias; 		
  	}
 } 
 

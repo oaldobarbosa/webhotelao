@@ -17,7 +17,8 @@ $hospedagemdao = new HospedagemDAO();
 
 <html>
 <head>
-	<title>Dash</title>
+	<title>Hospedagens</title>
+	<link rel="shortcut icon" href="style/favicon.ico" />
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Sail&display=swap" rel="stylesheet">
@@ -26,6 +27,55 @@ $hospedagemdao = new HospedagemDAO();
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 
 	<script type="text/javascript" src="js/js.js"></script>
+
+	<style type="text/css">
+
+		th{
+			text-align: center;
+			width: 150px;
+			height: 40px;
+			background-color: #47737C;
+			color: white;
+		}
+				
+		td{
+			text-align: center;
+			width: 101px;
+			height: 40px;
+			background-color: #C4C4C4;
+		}
+
+		.new-hsp{
+
+			background-color: green;
+			color: white;
+			width: 150px;
+			height: 40px;
+
+			border-radius: 25px;
+
+		}
+		.new-hsp:hover{
+			background-color: white;
+			color: green;
+			border: 0;
+		}
+
+		.bt-finalizar{
+			background-color: red;
+			color: white;
+			width: 100px;
+			height: 25px;
+
+			border-radius: 25px;
+		}
+		.bt-finalizar:hover{
+			background-color: #800000;
+		}
+
+
+
+	</style>
 </head>
 <body>
 
@@ -45,24 +95,27 @@ $hospedagemdao = new HospedagemDAO();
 	</nav>
 
 
-	<main id="conteudo">
+	<main id="conteudo"><center>
 
-		<h1>Hospedagens</h1>
+		<h1 >Hospedagens</h1>
 
-	<hr>
+	<br>
 
-	<a href="create_hospedagem.php"><button>Nova Hospedagem</button></a>
+	<a class="botao" href="create_hospedagem.php"><button class="new-hsp">Nova Hospedagem</button></a>
 
-	<hr>
+	<br><br>
 
-	<table border="1px">
+	<table >
 
 		<tr>
 			<th>CPF Hospede</th>
 			<th>Data Hospedagem</th>
 			<th>Data Checkout</th>
 			<th>Numero Quarto</th>
-			<th>Ações</th>
+			<th>Diarias</th>
+			<th>Valor Diária</th>
+			<th>Valor Total</th>
+			<th>_   Opção   _</th>
 		</tr>
 
 		<?php foreach ($hospedagemdao->read() as $hospedagem) { ?>
@@ -71,16 +124,20 @@ $hospedagemdao = new HospedagemDAO();
 				<td><?=$hospedagem->getCpfhospede(); ?></td>
 				<td><?=$hospedagem->getDatahospedagem(); ?></td>
 				<td><?=$hospedagem->getDatacheckout(); ?></td>
-				<td><?=$hospedagem->getNumero(); ?></td>
+				<td><?=$hospedagem->getNumeroquarto(); ?></td>
+				<td><?=$hospedagem->getDiarias(); ?></td>
+				<td><?=$hospedagem->getValordiaria(); ?></td>
+				<td><?=$hospedagem->getValorhospedagem(); ?></td>
+
 
 				<td>
 
 
-					<button data-target="#editar><?= $hospedagem->getIdhospedagem() ?>">Editar</button>
+					<!--<button data-target="#editar><?= $hospedagem->getIdhospedagem() ?>">Editar</button>-->
                                    
                         
                     <a href="../controller/HospedagemController.php?deletarHospedagem=<?= $hospedagem->getIdhospedagem() ?>">
-                        <button type="button">Excluir</button>
+                        <button type="button" class="bt-finalizar">Finalizar</button>
                     </a>
                                                        
 				</td>
@@ -89,7 +146,7 @@ $hospedagemdao = new HospedagemDAO();
 	</table>
 
 		
-	</main>
+	</center></main>
 
 </body>
 </html>

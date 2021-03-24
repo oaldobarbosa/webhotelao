@@ -33,6 +33,7 @@ if (!isset($_GET['cpf'])) {
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="shortcut icon" href="style/favicon.ico" />
 	<title>Nova Hospedagem</title>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -42,6 +43,75 @@ if (!isset($_GET['cpf'])) {
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 
 	<script type="text/javascript" src="js/js.js"></script>
+
+	<style type="text/css">
+		.input-form{
+			width: 200px;
+			height: 30px;
+
+			background-color: #c4c4c4;
+
+			border-radius: 25px;
+
+			border: 0;
+
+			padding-left:10px;
+
+			float: right;
+
+		}
+		.row{
+			width: 500px;
+		}
+
+		.row label{
+
+			float: left;
+			font-size: 20px;
+		}
+
+		.bottons{
+			margin-top: 20%;
+		}
+
+		.btn-editar{
+
+			margin-right: 5%;
+			
+			background-color: #01D623;
+			color: white;
+			width: 150px;
+			height: 40px;
+
+			font-size: 100%;
+
+			border-radius: 25px;
+
+			border:0;
+		}
+		.btn-editar:hover{
+			background-color: white;
+			color: green;
+			border: 0;
+		}
+
+		.btn-cancelar{
+			
+			background-color: red;
+			color: white;
+			width: 150px;
+			height: 40px;
+			border-radius: 25px;
+			border:0;
+
+		}
+		.btn-cancelar:hover{
+			background-color: white;
+			color: red;
+			border: 0;
+
+		}
+	</style>
 </head>
 
 
@@ -66,38 +136,53 @@ if (!isset($_GET['cpf'])) {
 	
 	</nav>
 
-	<main id="conteudo">
+	<main id="conteudo"><center>
 
 		<h1>Atualizar Hóspedes </h1>
 
 		<form  action="../controller/HospedeController.php" method="POST">
 		<div class="row" >
 
-			<input type="hidden" name="cpf" value="<?php echo $hospede['cpfhospede'] ?>" />
+			<input  type="hidden" name="cpf" value="<?php echo $hospede['cpfhospede'] ?>" />
 
 			<label>Nome</label>
-			<input type="text" name="nome" value="<?php echo $hospede['nome'] ?> "><br>
+			<input type="text" name="nome" value="<?php echo $hospede['nome'] ?> " class="input-form">
+
+			<br><br>
 
 			<label>Telefone</label>
-			<input type="text" name="telefone" value="<?php echo $hospede['telefone'] ?>"><br>
+			<input type="text" name="telefone" value="<?php echo $hospede['telefone'] ?>" class="input-form">
+
+			<br><br>
+
 
 			<label>Sexo</label>
-			<input type="text" name="sexo" value="<?php echo $hospede['sexo'] ?>"><br>
+				<select name="sexo" class="input-form" required="">
+					<option value="Masculino">Masculino</option>
+					<option value="Feminino">Feminino</option>
+
+				</select><br><br>
+			
+
 
 			<label>Data Nascimento</label>
-			<input type="date" name="dataNascimento" value="<?php echo $hospede['datanascimento'] ?>"><br>
+			<input type="date" name="dataNascimento" value="<?php echo $hospede['datanascimento'] ?>" class="input-form">
+
+			<br><br>
 
 
-			<button name="cancelarHospede">Cancelar</button>
-
-			<button type="submit" name="editarHospede">Atualizar Hóspede</button>
+			
+			<div class="bottons">
+				<button type="submit" name="editarHospede" class="btn-editar">Atualizar Hóspede</button>
+				<button name="cancelarHospede" class="btn-cancelar">Cancelar</button>
+			</div>
 
 		</div>	
 	</form>
 	
 
 
-	</main>
+	</center></main>
 
 </body>
 </html>

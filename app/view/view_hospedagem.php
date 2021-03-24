@@ -17,6 +17,7 @@ $hospedagemdao = new HospedagemDAO();
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="shortcut icon" href="style/favicon.ico" />
 	<title>Dados da Hospedagem</title>
 </head>
 <body>

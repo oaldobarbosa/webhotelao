@@ -20,15 +20,17 @@ if (isset($_POST['cadastrarHospedagem'])) {
 
 	$hospedagem->setCpfhospede($dados['cpfhospede']);
 	$hospedagem->setDatahospedagem($dados['datahospedagem']);
-	$hospedagem->setNumero($dados['numero']);
+	$hospedagem->setNumeroquarto($dados['numeroquarto']);
 	$hospedagem->setDatacheckout($dados['datacheckout']);
-	$hospedagem->setValor($dados['valor']);
+	$hospedagem->setValorhospedagem($dados['valorhospedagem']);
+
+	$hospedagem->setDiarias($dados['diarias']);
+	$hospedagem->setValordiaria($dados['valordiaria']);
 
 	if ($hospedagemdao->create($hospedagem)) {
 
 		echo "<script type='text/javascript'>alert('Hospedagem realizada com sucesso')</script>";
 		
-		/*echo '<script> window.location.href = "../view/create_hospedagem.php"; </script>';*/
 
 	} else{
 		echo "<script type='text/javascript'>alert('Erro ao Realizar hospedagem')</script>";
@@ -40,9 +42,9 @@ if (isset($_POST['cadastrarHospedagem'])) {
         	window.location.href = "../view/read_hospedagem.php";
     		</script>';
 
-	//header("Location: ../view/create_hospedagem.php");
-	//exit();
+}else if(isset($_POST['cancelarHospedagem'])){
 
+	header("Location: ../view/read_hospedagem.php");
 }
 
 
@@ -51,9 +53,12 @@ else if(isset($_POST['editarHospedagem'])){
 
     $hospedagem->setCpfhospede($dados['cpfhospede']);
 	$hospedagem->setDatahospedagem($dados['datahospedagem']);
-	$hospedagem->setNumero($dados['numero']);
+	$hospedagem->setNumeroquarto($dados['numeroquarto']);
 	$hospedagem->setDatacheckout($dados['datacheckout']);
-	$hospedagem->setValor($dados['valor']);
+	$hospedagem->setValorhospedagem($dados['valorhospedagem']);
+
+	$hospedagem->setDiarias($dados['diarias']);
+	$hospedagem->setValordiaria($valordiaria['valordiaria']);
 
     $hospedagemdao->update($hospedagem);
 

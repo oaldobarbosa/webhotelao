@@ -79,7 +79,7 @@ else if (isset($_GET['deletarHospede'])) {
         window.location.href = "../view/read_hospede.php";
     		</script>';
 	} else{
-		echo "<script type='text/javascript'>alert('Erro ao Excluir Hóspede ')</script>";
+		echo "<script type='text/javascript'>alert('Erro: Hóspedes Contém Pendências')</script>";
 		
 		echo '<script>
         window.location.href = "../view/read_hospede.php";

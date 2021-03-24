@@ -20,6 +20,7 @@ $hospededao = new HospedeDAO();
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="shortcut icon" href="style/favicon.ico" />
 	<title>Nova Hospedagem</title>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
