@@ -23,8 +23,6 @@ if (isset($_POST['cadastrarHospede'])) {
 	$hospede->setSexo($dados['sexo']);
 	$hospede->setDatanascimento($dados['dataNascimento']);
 
-	var_dump($dados['dataNascimento']);
-
 	if ($hospededao->create($hospede)) {
 
 		echo "<script type='text/javascript'>alert('Cadastro de Hóspede Realizada Com Sucesso')</script>";

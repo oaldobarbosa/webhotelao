@@ -11,6 +11,7 @@ require "../login/verificar.php";
  	$totalHospedagens = 0;
 	$totalHospedes = 0;
 	$quartoLivre = 0;
+	$quartoOcupado = 0;
 
 
 	$sql = "SELECT count(*) as thospedagem from hospedagem";
@@ -30,7 +31,6 @@ require "../login/verificar.php";
 	$totalHospedes = $p_sql['thospede'];
 
 
-
 	$sql = "SELECT count(*) as tquarto from quarto where status = 'livre'";
 	$p_sql = Conexao::getConexao()->prepare($sql);
 	$p_sql->execute();
@@ -39,14 +39,16 @@ require "../login/verificar.php";
 	$quartoLivre = $p_sql['tquarto'];
 
 
+	$sql = "SELECT count(*) as tquartooc from quarto where status = 'ocupado'";
+	$p_sql = Conexao::getConexao()->prepare($sql);
+	$p_sql->execute();
+	$p_sql = $p_sql->fetch();
+
+	$quartoOcupado = $p_sql['tquartooc'];
+
   ?>
 
 <!DOCTYPE html>
-
-
-
-
-
 
 <html>
 <head>
@@ -86,11 +88,15 @@ require "../login/verificar.php";
 	<main id="conteudo">
 
 		<h1>Dashboard</h1>
-		<hr>
+		<br>
 
 		<div class="caixa-hospedagem">Hospedagens: <h1><?php echo $totalHospedagens; ?></h1></div>
 		<div class="caixa-hospede">Hospedes Cadastrados: <h1><?php echo $totalHospedes; ?></h1></div>
-		<div class="caixa-reserva">Quartos Livres: <h1><?php echo $quartoLivre; ?></h1></div>
+		<div class="caixa-reserva">
+			Quartos Livres: <h2><?php echo $quartoLivre; ?></h2>
+			Quartos Ocupados: <h2><?php echo $quartoOcupado; ?></h2>
+
+		</div>
 		
 	</main>
 

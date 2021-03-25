@@ -76,7 +76,7 @@ if (!isset($_GET['cpf'])) {
 
 		.btn-editar{
 
-			margin-right: 5%;
+			margin-bottom: 10%;
 			
 			background-color: #01D623;
 			color: white;
@@ -139,6 +139,7 @@ if (!isset($_GET['cpf'])) {
 	<main id="conteudo"><center>
 
 		<h1>Atualizar Hóspedes </h1>
+		<br>
 
 		<form  action="../controller/HospedeController.php" method="POST">
 		<div class="row" >
@@ -148,12 +149,12 @@ if (!isset($_GET['cpf'])) {
 			<label>Nome</label>
 			<input type="text" name="nome" value="<?php echo $hospede['nome'] ?> " class="input-form">
 
-			<br><br>
+			<br><br><br>
 
 			<label>Telefone</label>
 			<input type="text" name="telefone" value="<?php echo $hospede['telefone'] ?>" class="input-form">
 
-			<br><br>
+			<br><br><br>
 
 
 			<label>Sexo</label>
@@ -161,24 +162,25 @@ if (!isset($_GET['cpf'])) {
 					<option value="Masculino">Masculino</option>
 					<option value="Feminino">Feminino</option>
 
-				</select><br><br>
-			
+				</select>
+
+
+			<br><br><br>			
 
 
 			<label>Data Nascimento</label>
 			<input type="date" name="dataNascimento" value="<?php echo $hospede['datanascimento'] ?>" class="input-form">
 
 			<br><br>
-
-
 			
 			<div class="bottons">
 				<button type="submit" name="editarHospede" class="btn-editar">Atualizar Hóspede</button>
-				<button name="cancelarHospede" class="btn-cancelar">Cancelar</button>
 			</div>
 
 		</div>	
 	</form>
+
+	<a href="read_hospede.php"><button name="cancelarHospede" class="btn-cancelar">Cancelar</button></a>
 	
 
 

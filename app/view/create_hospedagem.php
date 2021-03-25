@@ -153,25 +153,25 @@ $hospededao = new HospedeDAO();
 
 			</select>
 
-			<br><br>
+			<br><br><br>
 
 			<label>Nr Quarto</label>
 			<select onclick="buscaDados()" type="number" name="numeroquarto" id="numeroquarto" class="input-form" required="">
 				<option selected=""></option>
 				<?php 
 
-					$sql = "SELECT numeroquarto from quarto where status = 'livre'";
+					$sql = "SELECT numeroquarto, valordiaria from quarto where status = 'livre' order by numeroquarto asc";
 					$p_sql = Conexao::getConexao()->prepare($sql);
 					$p_sql->execute();
 
 					while ($result = $p_sql->fetch()) {
-						echo "<option value='".$result['numeroquarto']."'>".$result['numeroquarto']."</option>";
+						echo "<option value='".$result['numeroquarto']."'>".$result['numeroquarto']. " - Diaria: ". $result['valordiaria']." R$"."</option>";
 					}
 				?>
 			
 			</select>
 
-			<br><br>
+			<br><br><br>
 
 			<label>Valor Diaria</label>
 			<script type="text/javascript">
@@ -188,7 +188,7 @@ $hospededao = new HospedeDAO();
 			<br><br>	
 
 			<label>Data para checkout</label>
-			<input type="date" id="idDataCheckout" name="datacheckout" onchange="calc()" min="" class="input-form" required="">
+			<input type="date" id="idDataCheckout" name="datacheckout" onkeypress="return false" onchange="calc()" min="" class="input-form" required="">
 
 			<br><br>
 			<br><br>
@@ -218,6 +218,11 @@ $hospededao = new HospedeDAO();
 </body>
 
 <script type="text/javascript">
+
+	var today = new Date();
+	today.setDate(today.getDate() + 0); //Voalá
+	today = today.toISOString().split('T')[0];
+	document.getElementsByName("datacheckout")[0].setAttribute('min', today);
 
 
 	function calc(){

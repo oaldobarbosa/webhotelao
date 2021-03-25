@@ -17,6 +17,7 @@ $hospedagemdao = new HospedagemDAO();
 
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Hospedagens</title>
 	<link rel="shortcut icon" href="style/favicon.ico" />
 
@@ -119,6 +120,7 @@ $hospedagemdao = new HospedagemDAO();
 		</tr>
 
 		<?php foreach ($hospedagemdao->read() as $hospedagem) { ?>
+
 
 			<tr>
 				<td><?=$hospedagem->getCpfhospede(); ?></td>

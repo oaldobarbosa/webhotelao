@@ -61,7 +61,9 @@ class HospedagemDAO{
 				$s_lista[] = $this->listaHospedagem($l);
 			}
 
-			return $s_lista;
+			
+				return $s_lista;
+			
 
 			
 		} catch (Exception $e) {

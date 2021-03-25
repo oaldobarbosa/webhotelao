@@ -126,29 +126,29 @@ $hospededao = new HospedeDAO();
 	<main id="conteudo"><center>
 
 		<h1>Novo Hóspede</h1>
-		<hr>
+		<br>
 
 
 		<form  action="../controller/HospedeController.php" method="POST">
 		<div class="row" >
 			<label>Nome</label>
-			<input type="text" name="nome" class="input-form" required="">
+			<input type="text" name="nome" class="input-form" required="" autocomplete="off">
 			
-			<br><br>
+			<br><br><br>
 
 			<!-- verificara se a tecla presiona é ou não um número, caso seja letras retornara false, se for número retornará true e irá aparecer no input.-->
 			<label>Cpf</label>
-			<input id="cpfH" type="text" name="cpf" maxlength="11" class="input-form" placeholder="Apenas Numeros" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" required="">
+			<input id="cpfH" type="text" name="cpf" maxlength="11" class="input-form" placeholder="Apenas Numeros" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" required="" autocomplete="off">
 			
-			<br><br>
+			
+			<br><br><br>
 
 			<!-- verificara se a tecla presiona é ou não um número, caso seja letras retornara false, se for número retornará true e irá aparecer no input.-->
 			<label>Telefone</label>
 			<input type="text" name="telefone" class="input-form" maxlength="11" placeholder="DDD + Numero" maxlength="" onkeypress="
-			if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;
-			" required="">
+			if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" required="" autocomplete="off">
 			
-			<br><br>
+			<br><br><br>
 
 			<label>Sexo</label>
 				<select name="sexo" class="input-form" required="">
@@ -157,7 +157,7 @@ $hospededao = new HospedeDAO();
 
 				</select>
 
-			<br><br>
+			<br><br><br>
 			<!--<input type="text" name="sexo" class="input-form"><br><br>-->
 
 			<label>Data Nascimento</label>
@@ -166,6 +166,7 @@ $hospededao = new HospedeDAO();
 			<br><br>
 
 			<div class="bottons">
+				<h3>Preste atencão na hora de preencher os dados!</h3>
 				<button type="submit" name="cadastrarHospede" class="btn-cadastrar">Cadastrar Hóspede</button>
 			</div>
 			
@@ -173,7 +174,7 @@ $hospededao = new HospedeDAO();
 		</div>	
 	</form>
 
-	<a href="read_hospede.php"><button name="cancelarHospedagem" class="btn-cancelar">Cancelar</button></a>
+	<a href="read_hospede.php"><button name="cancelarHospede" class="btn-cancelar">Cancelar</button></a>
 
 		
 	</center></main>
