@@ -34,7 +34,7 @@ if (!isset($_GET['cpf'])) {
 <html>
 <head>
 	<link rel="shortcut icon" href="style/favicon.ico" />
-	<title>Nova Hospedagem</title>
+	<title>Atualizar Hospede</title>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Sail&display=swap" rel="stylesheet">
