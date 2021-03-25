@@ -21,7 +21,7 @@ $hospededao = new HospedeDAO();
 <html>
 <head>
 	<link rel="shortcut icon" href="style/favicon.ico" />
-	<title>Nova Hospedagem</title>
+	<title>Reservas</title>
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Sail&display=swap" rel="stylesheet">
