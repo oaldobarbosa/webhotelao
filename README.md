@@ -74,6 +74,7 @@ Acesse completo a base do layout no [Figma](https://www.figma.com/file/eOuryb8S4
 acesse este link: [webhotelao.com](https://webhotelao.herokuapp.com/app/login/login.php) e insira suas credenciais.
 
 <h2 id="autor">Autor</h2>
+- Equipe de Um Homem Só
 
 <table align="center">
    <tr>
