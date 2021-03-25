@@ -30,6 +30,7 @@ $hospededao = new HospedeDAO();
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 
 	<script type="text/javascript" src="js/js.js"></script>
+	<script type="text/javascript" src="js/create-hospedagem.js"></script>
 
 	<style type="text/css">
 		.input-form{
@@ -63,7 +64,7 @@ $hospededao = new HospedeDAO();
 
 		.btn-cadastrar{
 
-			margin-right: 5%;
+			margin-bottom: 10%;
 			
 			background-color: #01D623;
 			color: white;
@@ -127,36 +128,53 @@ $hospededao = new HospedeDAO();
 		<h1>Novo Hóspede</h1>
 		<hr>
 
+
 		<form  action="../controller/HospedeController.php" method="POST">
 		<div class="row" >
 			<label>Nome</label>
-			<input type="text" name="nome" class="input-form" ><br><br>
+			<input type="text" name="nome" class="input-form" required="">
+			
+			<br><br>
 
+			<!-- verificara se a tecla presiona é ou não um número, caso seja letras retornara false, se for número retornará true e irá aparecer no input.-->
 			<label>Cpf</label>
-			<input type="text" name="cpf" maxlength="11" class="input-form" placeholder="Apenas Numeros"><br><br>
+			<input id="cpfH" type="text" name="cpf" maxlength="11" class="input-form" placeholder="Apenas Numeros" onkeypress="if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;" required="">
+			
+			<br><br>
 
+			<!-- verificara se a tecla presiona é ou não um número, caso seja letras retornara false, se for número retornará true e irá aparecer no input.-->
 			<label>Telefone</label>
-			<input type="text" name="telefone" class="input-form" placeholder="Apenas Numeros"><br><br>
+			<input type="text" name="telefone" class="input-form" maxlength="11" placeholder="DDD + Numero" maxlength="" onkeypress="
+			if (!isNaN(String.fromCharCode(window.event.keyCode))) return true; else return false;
+			" required="">
+			
+			<br><br>
 
 			<label>Sexo</label>
-				<select name="sexo" class="input-form">
+				<select name="sexo" class="input-form" required="">
 					<option value="Masculino">Masculino</option>
 					<option value="Feminino">Feminino</option>
 
-				</select><br><br>
+				</select>
+
+			<br><br>
 			<!--<input type="text" name="sexo" class="input-form"><br><br>-->
 
 			<label>Data Nascimento</label>
-			<input type="date" name="dataNascimento" class="input-form"><br><br>
+			<input type="date" name="dataNascimento" class="input-form" required="">
+
+			<br><br>
 
 			<div class="bottons">
 				<button type="submit" name="cadastrarHospede" class="btn-cadastrar">Cadastrar Hóspede</button>
-				<button name="cancelarHospede" class="btn-cancelar">Cancelar</button>
 			</div>
 			
 
 		</div>	
 	</form>
+
+	<a href="read_hospede.php"><button name="cancelarHospedagem" class="btn-cancelar">Cancelar</button></a>
+
 		
 	</center></main>
 

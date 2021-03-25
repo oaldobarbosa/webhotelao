@@ -64,7 +64,7 @@ $hospededao = new HospedeDAO();
 
 		.btn-cadastrar{
 
-			margin-right: 5%;
+			margin-bottom: 10%;
 			
 			background-color: #01D623;
 			color: white;
@@ -100,6 +100,7 @@ $hospededao = new HospedeDAO();
 
 
 	</style>
+
 </head>
 
 <body>
@@ -136,7 +137,7 @@ $hospededao = new HospedeDAO();
 		<div class="row" >
 
 			<label>CPF do Hóspede</label>
-			<select type="text" name="cpfhospede" class="input-form">
+			<select type="text" name="cpfhospede" class="input-form" required>
 				
 				<option selected></option>
 				<?php 
@@ -155,7 +156,7 @@ $hospededao = new HospedeDAO();
 			<br><br>
 
 			<label>Nr Quarto</label>
-			<select type="number" name="numeroquarto" class="input-form">
+			<select onclick="buscaDados()" type="number" name="numeroquarto" id="numeroquarto" class="input-form" required="">
 				<option selected=""></option>
 				<?php 
 
@@ -181,14 +182,17 @@ $hospededao = new HospedeDAO();
 			<br><br>
 
 			<label>Data de Hospedagem</label>
-			<input type="date" id="idDataHospedagem" name="datahospedagem" class="input-form">
+			<?php  date_default_timezone_set('America/Sao_Paulo');?>
+			<input type="date" id="idDataHospedagem" name="datahospedagem" class="input-form" value="<?php echo date('Y-m-d'); ?>" readonly="true" >
 
 			<br><br>	
 
 			<label>Data para checkout</label>
-			<input type="date" id="idDataCheckout" name="datacheckout" onchange="calc()" min="" class="input-form">
+			<input type="date" id="idDataCheckout" name="datacheckout" onchange="calc()" min="" class="input-form" required="">
 
 			<br><br>
+			<br><br>
+
 
 			<label>Diárias</label>
 			<input type="number" id="idDiarias" name="diarias" value="" class="input-form" readonly="true">
@@ -201,11 +205,13 @@ $hospededao = new HospedeDAO();
 			<br><br>
 			<div class="bottons">
 			<button type="submit" name="cadastrarHospedagem" class="btn-cadastrar">Cadastrar</button>
-			<button name="cancelarHospedagem" class="btn-cancelar">Cancelar</button>
+			
 			</div>
 
 		</div>	
 	</form>
+
+	<a href="read_hospedagem.php"><button name="cancelarHospedagem" class="btn-cancelar">Cancelar</button></a>
 
 	</center></main>
 
@@ -225,15 +231,6 @@ $hospededao = new HospedeDAO();
 		let valorDiaria = document.getElementById("idValorDiaria").value;
 
 		let valorHospedagem = diarias * valorDiaria;
-
-
-		/*
-		let dias = 2;
-		let day = Date(document.getElementById("idDataHospedagem").value);
-		day.setDate(day.getDate() + dias);
-		day = day.toISOString().split('T')[0];
-		document.getElementsByName("datacheckout")[0].setAttribute('min', day);
-		*/
 
 		document.getElementById("idDiarias").setAttribute('value', diarias);
 		

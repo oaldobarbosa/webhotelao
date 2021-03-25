@@ -31,20 +31,13 @@ if (isset($_POST['cadastrarHospedagem'])) {
 
 		echo "<script type='text/javascript'>alert('Hospedagem realizada com sucesso')</script>";
 		
-
 	} else{
+
 		echo "<script type='text/javascript'>alert('Erro ao Realizar hospedagem')</script>";
 	}
 
-	
+	echo '<script>window.location.href = "../view/read_hospedagem.php"; </script>';
 
-	echo '<script>
-        	window.location.href = "../view/read_hospedagem.php";
-    		</script>';
-
-}else if(isset($_POST['cancelarHospedagem'])){
-
-	header("Location: ../view/read_hospedagem.php");
 }
 
 
@@ -60,9 +53,19 @@ else if(isset($_POST['editarHospedagem'])){
 	$hospedagem->setDiarias($dados['diarias']);
 	$hospedagem->setValordiaria($valordiaria['valordiaria']);
 
-    $hospedagemdao->update($hospedagem);
+    
 
-    header("Location: ../read_hospedagem.php");
+    if ($hospedagemdao->update($hospedagem)) {
+
+		echo "<script type='text/javascript'>alert('Hospedagem Atualizada Com Sucesso')</script>";
+		
+	} else{
+
+		echo "<script type='text/javascript'>alert('Erro ao Atualizar hospedagem')</script>";
+	}
+
+	echo '<script>window.location.href = "../view/read_hospedagem.php"; </script>';
+
 }
 
 
@@ -79,19 +82,15 @@ else if (isset($_GET['deletarHospedagem'])) {
 	if ($hospedagemdao->delete($hospedagem)) {
 
 		echo "<script type='text/javascript'>alert('Hospedagem Encerrada com Sucesso')</script>";
-		
-		echo '<script>
-        window.location.href = "../view/read_hospedagem.php";
-    		</script>';
 
 	} else{
+
 		echo "<script type='text/javascript'>alert('Erro ao Encerrar hospedagem')</script>";
 	}
 
-	///header("Location: ../read_hospedagem.php");
+	echo '<script>window.location.href = "../view/read_hospedagem.php"; </script>';
 	
 }
-
 
 
 
