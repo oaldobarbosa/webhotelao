@@ -1,5 +1,5 @@
 
-<p align="center" id="sobre"><img src="./public/img/logo.svg" width="100px"></p>
+<p align="center" id="sobre"><img src="./documentos/logo.png" width="50%"></p>
 
 <h1 align="center">WebHotelão</h1>
 
