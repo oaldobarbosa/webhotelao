@@ -13,12 +13,20 @@ class Conexao {
 
 
 
+<<<<<<< HEAD
         /*
+=======
+  /*      
+>>>>>>> 4ac91a9ee1b519d78d55a67aceefe65af02053a5
         $host = 'localhost; port=5432';
         $dbname = 'webhotelao2';
         $user = 'postgres';
         $pass = 'aldo1020';
+<<<<<<< HEAD
         */
+=======
+*/
+>>>>>>> 4ac91a9ee1b519d78d55a67aceefe65af02053a5
 
         $host = 'ec2-18-214-208-89.compute-1.amazonaws.com;port=5432';
         $dbname = 'delsshoqbjdfj6';
