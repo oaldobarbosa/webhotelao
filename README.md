@@ -3,7 +3,7 @@
 
 <h1 align="center">WebHotelão</h1>
 
-<p align="justify">WebHotelão é um sistema de gerenciamento de hospedagem desenvolvido para fins de aprovação na matéria de Laboratório de Programação Web I.</p>
+<p align="justify">WebHotelão é um sistema de gerenciamento de hospedagem desenvolvido com php no backend sem o uso de frameworks, para fins de aprovação na matéria de Laboratório de Programação Web I.</p>
 
 <p align="center">
   <a href="#sobre">Sobre</a> •
